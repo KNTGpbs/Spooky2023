@@ -1,4 +1,4 @@
-using NUnit.Framework.Internal.Commands;
+﻿using NUnit.Framework.Internal.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,19 +18,25 @@ public class DoorOpen : MonoBehaviour
             openEvent = new UnityEvent();
         }
         this.sprite = GetComponent<SpriteRenderer>();
-        inventorySystem.AddItem(new ItemData("Key", GameObject.Find("FurnitureTest").GetComponent<FurnitureLogic>(), openEvent));
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOpened == true && enteredCollision == true)
+        if (Input.GetKeyDown(KeyCode.Space) && enteredCollision)
         {
-            enterEvent.Invoke(this);
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && enteredCollision == true && isOpened == false)
-        {
-            openEvent.Invoke(); 
-            isOpened = true;
+            if (isOpened)
+            {
+                enterEvent.Invoke(this);
+            }
+            else
+            {
+                openEvent.Invoke();
+                isOpened = true;
+                // TODO(@ktoś): ustaw sprite
+                var color = sprite.color;
+                color.a = 0.2f;
+                sprite.color = color;
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEditor.SearchService;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,11 +10,14 @@ public class PlayerMovement : MonoBehaviour
     private float input;
     private Rigidbody2D rb;
     private bool turnedToBG = false;
+    [SerializeField] private GameObject inventoryCanvas;
+    [SerializeField] private GameObject guiCanvas;
+    public InventorySystem Inventory;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    
+
     void Update()
     {
         input = Input.GetAxis("Horizontal");
@@ -20,6 +25,27 @@ public class PlayerMovement : MonoBehaviour
         {
             turnedToBG = true;
         }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            inventoryCanvas.SetActive(!inventoryCanvas.active);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            guiCanvas.SetActive(!guiCanvas.active);
+        }
+
+        List<Collider2D> colliders = new();
+        rb.Overlap(colliders);
+        ItemTarget target = null;
+        foreach (var col in colliders)
+        {
+            target = col.GetComponent<ItemTarget>();
+            if (target != null)
+            {
+                break;
+            }
+        }
+        Inventory.currentTargetObject = target;
     }
 
     private void FixedUpdate()

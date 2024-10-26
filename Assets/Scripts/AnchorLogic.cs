@@ -29,21 +29,19 @@ public class AnchorLogic : MonoBehaviour
         
     }
 
-    async void CheckAndMoveOn(DoorOpen component)
+    async void CheckAndMoveOn(DoorOpen door)
     {
-        Vector2 eventActionAnchor = component.transform.position;
+        Vector2 eventActionAnchor = door.transform.position;
         Debug.Log(eventActionAnchor);
         actionStart.Invoke(eventActionAnchor);
 
-        foreach (var doorOpen in actionScripts)
+        if (actionScripts.Contains(door))
         {
-            if (doorOpen == component)
-            {
-                Vector2 nextActionAnchor = actionScripts[(actionScripts.IndexOf(doorOpen) + 1) % actionScripts.Count()].transform.position;
-                await Task.Delay(2000);
-                Debug.Log(nextActionAnchor);
-                actionStop.Invoke(nextActionAnchor);
-            }
+            Debug.LogError("Nieznane drzwi");
         }
+        Vector2 nextActionAnchor = actionScripts[(actionScripts.IndexOf(door) + 1) % actionScripts.Count()].transform.position;
+        await Task.Delay(2000);
+        Debug.Log(nextActionAnchor);
+        actionStop.Invoke(nextActionAnchor);
     }
 }
