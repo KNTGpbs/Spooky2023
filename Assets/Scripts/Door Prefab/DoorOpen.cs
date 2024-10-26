@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,8 @@ public class DoorOpen : MonoBehaviour
     private bool isOpened = false;
     public UnityEvent openEvent;
     public UnityEvent<DoorOpen> enterEvent;
+    //[SerializeField] private ItemData testItem;
+    [SerializeField] private InventorySystem inventorySystem;
     void Start()
     {
         if (openEvent == null)
@@ -15,6 +18,7 @@ public class DoorOpen : MonoBehaviour
             openEvent = new UnityEvent();
         }
         this.sprite = GetComponent<SpriteRenderer>();
+        inventorySystem.AddItem(new ItemData("Key", GameObject.Find("FurnitureTest").GetComponent<FurnitureLogic>(), openEvent));
     }
 
     void Update()
@@ -25,7 +29,7 @@ public class DoorOpen : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && enteredCollision == true && isOpened == false)
         {
-            openEvent.Invoke();
+            openEvent.Invoke(); 
             isOpened = true;
         }
     }

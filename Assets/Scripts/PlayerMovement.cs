@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float input;
     private Rigidbody2D rb;
+    private bool turnedToBG = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,10 +16,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         input = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            turnedToBG = true;
+        }
     }
 
     private void FixedUpdate()
     {
         rb.linearVelocityX = input * moveSpeed;
+    }
+
+    public bool GetTurnedToBG()
+    {
+        return turnedToBG;
     }
 }
