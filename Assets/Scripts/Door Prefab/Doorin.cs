@@ -24,7 +24,7 @@ public class Doorin : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && enteredCollision)
+        if (Input.GetKeyDown(KeyCode.E) && enteredCollision)
         {
             if (openState == OpenState.Closed)
             {

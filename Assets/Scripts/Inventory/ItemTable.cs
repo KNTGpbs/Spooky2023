@@ -25,6 +25,7 @@ public static class ItemTable {
         new("łom", new SpecialItem("Łom", "plank")),
         new("exit-key", new SpecialItem("Klucz", "exit")),
         new("sun", new SpecialItem("Świeczka", "dark")),
+        new("szyfr", new SpecialItem("Alf. szyfr", ""))
     });
 
     public static readonly UseEntry[] UseTable = new[] {

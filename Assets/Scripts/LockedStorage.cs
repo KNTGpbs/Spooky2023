@@ -19,6 +19,7 @@ public class LockedStorage: SpecialItemTarget
         //    // TODO: Play sound
         //}
         Debug.Log($"Item {item.ItemName} is used");
+        container.inventorySystem.RemoveItem(item);
         container.AddEachItem();
     }
 }

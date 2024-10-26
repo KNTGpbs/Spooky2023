@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEditor.SearchService;
+using UnityEditor.Animations;
 
 public class PlayerMovement : MonoBehaviour
 {

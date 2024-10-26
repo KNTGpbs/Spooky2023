@@ -20,7 +20,7 @@ public class DoorOpen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && enteredCollision)
+        if (Input.GetKeyDown(KeyCode.E) && enteredCollision)
         {
             if (isOpened)
             {

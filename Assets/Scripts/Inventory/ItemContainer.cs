@@ -35,7 +35,7 @@ public class ItemContainer : MonoBehaviour
         if (!playerEntered)
             return;
 
-        if (Input.GetKeyDown(KeyCode.H) && !IsLocked && player.GetTurnedToBG() && !used)
+        if (Input.GetKeyDown(KeyCode.E) && !IsLocked && player.GetTurnedToBG() && !used)
         {
             /*
             Debug.Log(GameObject.Find("FurnitureTest").GetComponent<ItemContainer>().GetFlag());

@@ -11,9 +11,10 @@ using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
-    private List<ItemEntry> items = new();
+    private List<ItemData> items = new();
     private int count = 0;
     private List<GameObject> anchors = new();
+    [SerializeField] private GameObject anchorsGameObject;
     [SerializeField] private GameObject newItemUI;
     public ItemTarget? currentTargetObject;
     public SanityController sanityController;
@@ -21,25 +22,20 @@ public class InventorySystem : MonoBehaviour
 
     private void Start()
     {
-        foreach (Transform child in GameObject.Find("Inventory").transform)
+        foreach (Transform child in anchorsGameObject.transform)
         {
-            anchors.Add(child.gameObject);
+            anchors.Add(child.GameObject());
         };
+        anchorsGameObject.transform.parent.gameObject.SetActive(false);
     }
 
     public void AddItem(ItemData item)
     {
-        if (item is Note note)
-        {
-            DisplayNote(note);
-            return;
-        }
-        Canvas canvas = GameObject.Find("InventoryCanvas").GetComponent<Canvas>();
         var newItem = Instantiate(newItemUI);
         var entry = newItem.GetComponent<ItemEntry>();
         entry.Item = item;
         entry.inventorySystem = this;
-        items.Add(entry);
+        items.Add(item);
         newItem.transform.SetParent(anchors[count].transform, false);
         newItem.transform.position = anchors[count].transform.position;
         newItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.ItemName;
@@ -52,8 +48,17 @@ public class InventorySystem : MonoBehaviour
         noteDisplay.ChangeNote(note.sprite);
     }
 
-    public void RemoveItem(ItemEntry item) {
-        items.Remove(item); 
+    public void RemoveItem(ItemData itemToDelete) {
+        items.Remove(itemToDelete);
+        foreach (GameObject anchor in anchors)
+        {
+            if(anchor.transform.GetChild(0).GetComponent<ItemEntry>().item.ItemName == itemToDelete.ItemName)
+            {
+                Destroy(anchor.transform.GetChild(0).gameObject);
+                break;
+            }
+        }
+        count--;
     }
 
     public void UseItem(ItemEntry item)
