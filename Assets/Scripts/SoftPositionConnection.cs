@@ -10,11 +10,13 @@ public class SoftPositionConnection : MonoBehaviour
     {
         if (isSoft)
         {
-            transform.position = Vector3.Lerp(transform.position, ObjectToFollow.transform.position, softSpeed * Time.deltaTime); 
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            pos = Vector2.Lerp(pos, new Vector2(ObjectToFollow.transform.position.x, ObjectToFollow.transform.position.y), softSpeed * Time.deltaTime);
+            transform.position = new Vector3(pos.x, pos.y, transform.position.z);
         }
         else
         {
-            transform.position = new Vector3(ObjectToFollow.transform.position.x, ObjectToFollow.transform.position.y, ObjectToFollow.transform.position.z);
+            transform.position = new Vector3(ObjectToFollow.transform.position.x, ObjectToFollow.transform.position.y, transform.position.z);
         }
     }
 }
