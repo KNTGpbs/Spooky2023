@@ -9,8 +9,6 @@ public class DoorOpen : MonoBehaviour
     private bool isOpened = false;
     public UnityEvent openEvent;
     public UnityEvent<DoorOpen> enterEvent;
-    //[SerializeField] private ItemData testItem;
-    [SerializeField] private InventorySystem inventorySystem;
     void Start()
     {
         if (openEvent == null)

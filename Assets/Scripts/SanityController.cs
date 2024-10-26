@@ -30,4 +30,9 @@ public class SanityController : MonoBehaviour
     {
         sanityPoints -= sanityReductionMultipler * wrongItemPenalty;
     }
+
+    public void ModifySanity(float modifier)
+    {
+        sanityPoints += modifier;
+    }
 }
