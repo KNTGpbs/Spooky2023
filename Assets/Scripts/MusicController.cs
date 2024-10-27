@@ -18,7 +18,7 @@ public class MusicController : MonoBehaviour
     {
         if (!audioSource[0].isPlaying)
         {
-            StartCoroutine(WaitAndExecute());
+            StartCoroutine(WaitAndExecute(240));
         }
         if (!audioSource[1].isPlaying && !isInDark)
         { 
@@ -26,9 +26,9 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitAndExecute()
+    private IEnumerator WaitAndExecute(int seconds )
     {
-        yield return new WaitForSeconds(300);
+        yield return new WaitForSeconds(seconds);
 
         audioSource[0].Play();
     }
@@ -55,6 +55,9 @@ public class MusicController : MonoBehaviour
         isInDark = true;
         audioSource[0].Pause();
         audioSource[1].Pause();
+        audioSource[2].Play();
+        StartCoroutine(WaitAndExecute(7));
+        //audioSource[2].resource = audioClip[3];
         audioSource[2].Play();
     }
 

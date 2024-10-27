@@ -30,7 +30,7 @@ public class EndingController: MonoBehaviour
     private void Update()
     {
         animationProgess += Time.deltaTime;
-        background.color = background.color.WithAlpha(Math.Max(1.0f, animationProgess / 2.0f));
+        background.color = background.color.WithAlpha(Math.Min(1.0f, animationProgess / 2.0f));
         text.color = text.color.WithAlpha(Math.Clamp((animationProgess - 1.0f) / 3.0f, 0.0f, 1.0f));
         if (animationProgess >= 4.0f)
         {

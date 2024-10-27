@@ -9,14 +9,8 @@ public class MusicCollider : MonoBehaviour
     void Start()
     {
         this.collider2D = GetComponent<BoxCollider2D>();
-        if(musicColliderInside == null)
-        {
-            musicColliderInside = new UnityEvent<bool>();
-        }
-        if(musicColliderDistance == null)
-        {
-            musicColliderDistance = new UnityEvent<float>();
-        }
+        musicColliderInside ??= new UnityEvent<bool>();
+        musicColliderDistance ??= new UnityEvent<float>();
     }
 
     // Update is called once per frame
