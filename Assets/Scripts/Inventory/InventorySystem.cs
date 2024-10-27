@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class InventorySystem : MonoBehaviour
 {
     public List<ItemData> items = new();
-    private int count = 0;
+    private int itemsLow = 0;
     private List<GameObject> anchors = new();
     [SerializeField] private GameObject anchorsGameObject;
     [SerializeField] private GameObject newItemUI;
@@ -46,10 +46,21 @@ public class InventorySystem : MonoBehaviour
         entry.Item = item;
         entry.inventorySystem = this;
         items.Add(item);
-        newItem.transform.SetParent(anchors[count].transform, false);
-        newItem.transform.position = anchors[count].transform.position;
+        int anchorIndex;
+        for (anchorIndex = itemsLow; anchorIndex < anchors.Count; anchorIndex++)
+        {
+            if (anchors[anchorIndex].transform.childCount == 0)
+            {
+                break;
+            }
+        }
+        newItem.transform.SetParent(anchors[anchorIndex].transform, false);
+        newItem.transform.position = anchors[anchorIndex].transform.position;
         newItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.ItemName;
-        count++;
+        if (anchorIndex == itemsLow)
+        {
+            itemsLow += 1;
+        }
         //newItem.GetComponentInChildren<TextMeshPro>().text = itemData.itemName;
     }
 
@@ -60,6 +71,7 @@ public class InventorySystem : MonoBehaviour
 
     public void RemoveItem(ItemData itemToDelete) {
         items.Remove(itemToDelete);
+        int index = 0;
         foreach (GameObject anchor in anchors)
         {
             if(anchor.transform.GetChild(0).GetComponent<ItemEntry>().item.ItemName == itemToDelete.ItemName)
@@ -67,8 +79,14 @@ public class InventorySystem : MonoBehaviour
                 Destroy(anchor.transform.GetChild(0).gameObject);
                 break;
             }
+
+            ++index;
         }
-        count--;
+
+        if (itemsLow > index)
+        {
+            itemsLow = index;
+        }
     }
 
     public void UseItem(ItemEntry item)
