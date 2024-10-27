@@ -26,7 +26,7 @@ public static class ItemTable {
     {
         new("crowbar", new SpecialItem("Crowbar", "plank")),
         new("exit-key", new SpecialItem("Key", "exit")),
-        new("sun", new SpecialItem("Candle", "dark")),
+        new("sun", new SpecialItem("Candle", "DarkRoom")),
         new("szyfr", new SpecialItem("Cipher Alphabet", "")),
         new("tel", new SpecialItem("Phone Number", "")),
     });
