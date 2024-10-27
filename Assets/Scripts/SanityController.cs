@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,9 +38,10 @@ public class SanityController : MonoBehaviour
     public void ModifySanity(float modifier)
     {
         sanityPoints += modifier;
-        if (modifier > 0) {
-            
-        }
+        if (modifier < 0) {
+            if(!GetComponents<AudioSource>()[3].isPlaying)
+            GetComponents<AudioSource>()[3].Play();
+       }
         else
         {
             if (sanityPoints < 9000 && !isEventInvoke[9]) {
