@@ -11,7 +11,7 @@ public class Doorin : MonoBehaviour
 {
     public Doorin OtherDoor;
     public float AnimSpeed = 1.0f / 2.0f;
-
+    
     private Collider2D? enteredCollision;
     private float openingAnimTime;
     private OpenState openState;
@@ -39,11 +39,7 @@ public class Doorin : MonoBehaviour
         if (openState == OpenState.Opening)
         {
             openingAnimTime += AnimSpeed * Time.deltaTime;
-            // TODO: Wstaw dobrą animację
-            var color = sprite.color;
-            color.r = 1.0f - openingAnimTime;
-            color.g = 1.0f - openingAnimTime;
-            sprite.color = color;
+            
             if (openingAnimTime >= 1.0f)
             {
                 openState = OpenState.Open;
@@ -56,6 +52,8 @@ public class Doorin : MonoBehaviour
         Doorin? door = this;
         do
         {
+            GetComponent<Animator>().enabled = true;
+            GetComponent<Animator>().Play("DoorOpen");
             // TODO: Odtwórz dźwięk drzwi
             door.openState = OpenState.Opening;
             door = door.OtherDoor;
