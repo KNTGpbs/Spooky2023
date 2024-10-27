@@ -60,25 +60,27 @@ public class EndingController: MonoBehaviour
         {
             Ending.ExitDoor => 
             @"You've managed to escape this haunted house, but nothing seems like it used to.
-            It seems that every one and everything is against you. Those faces and voices are everywhere
-            and no one can be trusted. YOU ARE ALONE AND ALWAYS WILL BE. Bun you will never come back to this house.
+            It seems that everyone and everything is against you. Those faces and voices are everywhere
+            and no one can be trusted. YOU ARE ALONE AND ALWAYS WILL BE. But you will never come back to this house.
             You ran away successfully.
                 Ending #1 of 5",
             Ending.Phone =>
             @"You called your mother using the phone in your living room.
             Even though, she had to stay in the hospital for a few more days, she immediately called for help.
             You are now hospitalised again, and thanks to the new medication, and therapy you are slowly getting better.
-            You still fill alone, but you know you will manage with the support of your family. 
+            You still feel alone, but you know you will manage with the support of your family. 
             You Just have to take care of yourself and give yourself some time.
                 Ending #2 of 5",
-            Ending.BadPills =>
-                @"BadPills Ending.
+            Ending.BadPills => 
+            @"The last sound you've heard was sirens coming closer towards you.
+            The scariest part was, YOU WERE ALL ALONE.
                 Ending #3 of 5",
             Ending.SanityOver =>
-                @"SanityOver Ending.
+            @"YOU WISHED YOU WERE ALONE. 
                 Ending #4 of 5",
             Ending.GoodPills =>
-                @"GoodPills Ending.
+            @"After taking your medication, the voices had stopped. You finally felt at peace.
+            You finally were alone. You just wished someone could share your happiness.
                 Ending #5 of 5",
             _ => throw new ArgumentOutOfRangeException(nameof(ending), "burg"),
         };
