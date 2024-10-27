@@ -30,6 +30,7 @@ public static class ItemTable {
         new("szyfr", new Note("Cipher Alphabet", "Sprites/greenCode")),
         new("tel", new Note("Phone Number", "")),
         new("message", new Note("Encrypted Message", "Sprites/blueCode")),
+        new("diagnose", new Note("Diagnose", "Sprites/greenCode")),
     });
     
     public static readonly UseEntry[] UseTable = new[] {

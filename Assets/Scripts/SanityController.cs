@@ -11,6 +11,7 @@ public class SanityController : MonoBehaviour
     [SerializeField] private float initialSanityPoints = 10000f;
     [SerializeField] private float sanityReductionMultipler = 1;
     [SerializeField] private float wrongItemPenalty = 100f;
+    [SerializeField] private EndingController endingController;
 
     private float sanityPoints;
     
@@ -22,6 +23,10 @@ public class SanityController : MonoBehaviour
     private void FixedUpdate()
     {
         sanityPoints -= Time.deltaTime * sanityReductionMultipler;
+        if (sanityPoints <= 0)
+        {
+            endingController.TriggerEnding(Ending.SanityOver);
+        }
     }
 
     public void ModifySanityReductionMultiply(float newSanityReductionMultiplier)
