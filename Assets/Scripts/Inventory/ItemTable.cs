@@ -27,10 +27,10 @@ public static class ItemTable {
         new("crowbar", new SpecialItem("Crowbar", "plank")),
         new("exit-key", new SpecialItem("Key", "exit")),
         new("sun", new SpecialItem("Candle", "DarkRoom")),
-        new("szyfr", new Note("Cipher Alphabet", "Sprites/greenCode")),
-        new("tel", new Note("Phone Number", "")),
+        new("szyfr", new Note("Cipher Alphabet", "Sprites/alfabetKod")),
+        new("tel", new Note("Phone Number", "Sprites/puzzlePhoneCode")),
         new("message", new Note("Encrypted Message", "Sprites/blueCode")),
-        new("diagnose", new Note("Diagnose", "Sprites/greenCode")),
+        new("diagnose", new Note("Diagnose", "Sprites/PESCRIBgreen")),
     });
     
     public static readonly UseEntry[] UseTable = new[] {

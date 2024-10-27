@@ -15,6 +15,7 @@ public class FirstAidKitLogic : MonoBehaviour
     [SerializeField] private SanityController sanityController;
     [SerializeField] private EndingController endingController;
     [SerializeField] private InventorySystem inventorySystem;
+    //[SerializeField] private GameObject bathroomFloorManager;
     private bool isEntered = false;
     private ItemContainer container;
 
@@ -59,6 +60,7 @@ public class FirstAidKitLogic : MonoBehaviour
             endingController.TriggerEnding(Ending.BadPills);
             if (inventorySystem.FindItem("Diagnose"))
             {
+                
                 endingController.TriggerEnding(Ending.GoodPills);
             }
         }
