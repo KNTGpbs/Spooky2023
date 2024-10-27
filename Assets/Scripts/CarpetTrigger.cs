@@ -26,8 +26,8 @@ public class CarpetTrigger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !itemContainer.IsLocked && player.GetTurnedToBG() && !itemContainer.GetUsed() && playerEntered)
         {
-            sr.sprite = usedCarpet;
             plank.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
