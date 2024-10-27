@@ -70,6 +70,7 @@ public class InventorySystem : MonoBehaviour
 
             if (!glItem.TryUse())
             {
+                Debug.Log("Dupapaaa");
                 sanityController.ItemUseFailed();
             }
         }
