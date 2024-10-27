@@ -9,12 +9,13 @@ using UnityEngine.UI;
 public class SafeScript : MonoBehaviour
 {
     public Image[] stars;
-    private String code = "1072";
+    [SerializeField] String code = "1072";
     private String input = "";
     private ItemContainer container;
     [SerializeField] private GameObject safeGui;
     private bool isEntered = false;
     private bool used = false;
+    private PlayerMovement player;
 
     public bool GetUsed()
     {
@@ -30,11 +31,12 @@ public class SafeScript : MonoBehaviour
         foreach (Image star in stars)
             star.enabled = false;
         container = GetComponent<ItemContainer>();
+        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && isEntered && !container.GetUsed())
+        if(Input.GetKeyDown(KeyCode.E) && isEntered && !container.GetUsed() && player.GetTurnedToBG())
         {
             safeGui.SetActive(true);
         }
@@ -52,7 +54,10 @@ public class SafeScript : MonoBehaviour
     {
         if (pin == code){
             safeGui.SetActive(false);
-            container.AddEachItem();
+            if(gameObject.name == "Phone")
+                EndingController.FindInstance().TriggerEnding(Ending.Phone);
+            else
+                container.AddEachItem();
         }
         else{
             input = "";

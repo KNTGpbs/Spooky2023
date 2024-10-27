@@ -22,14 +22,15 @@ public static class ItemTable {
 
     public static readonly Dictionary<string, ItemData> KnownItems = new(new KeyValuePair<string, ItemData>[]
     {
-        new("łom", new SpecialItem("Łom", "plank")),
-        new("exit-key", new SpecialItem("Klucz", "exit")),
-        new("sun", new SpecialItem("Świeczka", "dark")),
-        new("szyfr", new SpecialItem("Alf. szyfr", ""))
+        new("crowbar", new SpecialItem("Crowbar", "plank")),
+        new("exit-key", new SpecialItem("Key", "exit")),
+        new("sun", new SpecialItem("Candle", "dark")),
+        new("szyfr", new SpecialItem("Cipher Alphabet", "")),
+        new("tel", new SpecialItem("Phone Number", "")),
     });
 
     public static readonly UseEntry[] UseTable = new[] {
-        new UseEntry { ObjectId = "deska", ItemId = "łom" },
+        new UseEntry { ObjectId = "deska", ItemId = "crowbar" },
         new UseEntry { ObjectId = "exit", ItemId = "exit-key" },
     };
 
