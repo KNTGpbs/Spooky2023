@@ -43,7 +43,7 @@ public class SanityController : MonoBehaviour
     {
         sanityPoints += modifier;
         if (modifier > 0) {
-
+            
         }
         else
         {
