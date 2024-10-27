@@ -8,27 +8,23 @@ public class DarkRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision != null && !collision.gameObject.CompareTag("Player"))
         {
-            if (!collision.gameObject.CompareTag("Player"))
+            if (!isCandleUsed)
             {
-                if (!isCandleUsed)
-                {
-                    playerLight = GameObject.Find("PlayerLight").GetComponent<Light2D>();
-                    playerLight.enabled = false;
-                }
-                playerLight.color = new Color(1, .40f, .10f);
+                playerLight = GameObject.Find("PlayerLight").GetComponent<Light2D>();
+                playerLight.enabled = false;
             }
+            playerLight.color = new Color(1, .40f, .10f);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision != null && !collision.gameObject.CompareTag("Player"))
         {
-            if (!collision.gameObject.CompareTag("Player"))
+            if (!isCandleUsed)
             {
-                if(!isCandleUsed)
                 playerLight.enabled = true;
                 playerLight.color = Color.white;
             }
