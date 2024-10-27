@@ -29,6 +29,7 @@ public static class ItemTable {
         new("sun", new SpecialItem("Candle", "DarkRoom")),
         new("szyfr", new SpecialItem("Cipher Alphabet", "")),
         new("tel", new SpecialItem("Phone Number", "")),
+        new("message", new SpecialItem("Encrypted Message", "")),
     });
     
     public static readonly UseEntry[] UseTable = new[] {
