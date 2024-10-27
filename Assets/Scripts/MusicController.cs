@@ -6,6 +6,9 @@ public class MusicController : MonoBehaviour
     public AudioSource[] audioSource;
 
     public AudioClip[] audioClip;
+
+    bool isCandleUsed = false;
+    bool isInDark = false;
     void Start()
     {
         audioSource = GetComponents<AudioSource>();
@@ -17,7 +20,7 @@ public class MusicController : MonoBehaviour
         {
             StartCoroutine(WaitAndExecute());
         }
-        if (!audioSource[1].isPlaying)
+        if (!audioSource[1].isPlaying && !isInDark)
         { 
             audioSource[1].Play();
         }
@@ -44,5 +47,27 @@ public class MusicController : MonoBehaviour
     {
         audioSource[0].resource = audioClip[2];
         audioSource[0].Play();
+    }
+
+    public void OnCandleUsedEvent()
+    {
+        isCandleUsed = true;
+        isInDark = true;
+        audioSource[0].Pause();
+        audioSource[1].Pause();
+        audioSource[2].Play();
+    }
+
+    public void OnDarkEntered()
+    {
+        audioSource[0].Pause();
+        audioSource[1].Pause();
+        isInDark = true;
+    }
+    public void OnDarkExited()
+    {
+        audioSource[0].Play();
+        audioSource[1].Play();
+        isInDark = false;
     }
 }

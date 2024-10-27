@@ -22,7 +22,6 @@ public class SanityController : MonoBehaviour
     private void FixedUpdate()
     {
         sanityPoints -= Time.deltaTime * sanityReductionMultipler;
-        Debug.Log(sanityPoints);
     }
 
     public void ModifySanityReductionMultiply(float newSanityReductionMultiplier)
