@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public static class ItemTable {
     public record Item
@@ -28,7 +30,7 @@ public static class ItemTable {
         new("szyfr", new SpecialItem("Cipher Alphabet", "")),
         new("tel", new SpecialItem("Phone Number", "")),
     });
-
+    
     public static readonly UseEntry[] UseTable = new[] {
         new UseEntry { ObjectId = "deska", ItemId = "crowbar" },
         new UseEntry { ObjectId = "exit", ItemId = "exit-key" },
