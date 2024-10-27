@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      szafka kuchenna_0: 8620755516835916374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kuchenka_0: -6840702095275789485
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
