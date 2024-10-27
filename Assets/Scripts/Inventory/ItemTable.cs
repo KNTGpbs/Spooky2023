@@ -27,9 +27,9 @@ public static class ItemTable {
         new("crowbar", new SpecialItem("Crowbar", "plank")),
         new("exit-key", new SpecialItem("Key", "exit")),
         new("sun", new SpecialItem("Candle", "DarkRoom")),
-        new("szyfr", new SpecialItem("Cipher Alphabet", "")),
-        new("tel", new SpecialItem("Phone Number", "")),
-        new("message", new SpecialItem("Encrypted Message", "")),
+        new("szyfr", new Note("Cipher Alphabet", "Sprites/greenCode")),
+        new("tel", new Note("Phone Number", "")),
+        new("message", new Note("Encrypted Message", "Sprites/blueCode")),
     });
     
     public static readonly UseEntry[] UseTable = new[] {

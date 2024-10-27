@@ -47,10 +47,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             inventoryCanvas.SetActive(!inventoryCanvas.active);
+            guiCanvas.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            guiCanvas.SetActive(!guiCanvas.active);
+            guiCanvas.transform.Find("NoteDisplayer").gameObject.SetActive(false);
         }
 
         List<Collider2D> colliders = new();

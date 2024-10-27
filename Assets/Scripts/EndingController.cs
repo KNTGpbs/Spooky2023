@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public enum Ending
 {
     ExitDoor,
-    Phone
+    Phone,
+    BadPills,
+    GoodPills,
+    SanityOver
 }
 
 public class EndingController: MonoBehaviour
@@ -60,14 +63,23 @@ public class EndingController: MonoBehaviour
             It seems that every one and everything is against you. Those faces and voices are everywhere
             and no one can be trusted. YOU ARE ALONE AND ALWAYS WILL BE. Bun you will never come back to this house.
             You ran away successfully.
-                Ending #2 of 5",
+                Ending #1 of 5",
             Ending.Phone =>
             @"You called your mother using the phone in your living room.
             Even though, she had to stay in the hospital for a few more days, she immediately called for help.
             You are now hospitalised again, and thanks to the new medication, and therapy you are slowly getting better.
             You still fill alone, but you know you will manage with the support of your family. 
             You Just have to take care of yourself and give yourself some time.
-                Ending #1 of 5",
+                Ending #2 of 5",
+            Ending.BadPills =>
+                @"BadPills Ending.
+                Ending #3 of 5",
+            Ending.SanityOver =>
+                @"SanityOver Ending.
+                Ending #4 of 5",
+            Ending.GoodPills =>
+                @"GoodPills Ending.
+                Ending #5 of 5",
             _ => throw new ArgumentOutOfRangeException(nameof(ending), "burg"),
         };
         enabled = true;

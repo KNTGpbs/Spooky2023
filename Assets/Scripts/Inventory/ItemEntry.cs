@@ -37,4 +37,9 @@ public class ItemEntry : MonoBehaviour
     {
         inventorySystem.UseItem(this);
     }
+
+    public void NoteData_clicked()
+    {
+        inventorySystem.UseItem(this);
+    }
 }

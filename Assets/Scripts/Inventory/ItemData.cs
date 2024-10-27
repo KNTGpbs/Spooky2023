@@ -33,6 +33,11 @@ public abstract class GlobalItem: ItemData
 
 public class Note: ItemData
 {
-    // TODO: Sprite path or smth
-    public readonly Sprite sprite;
+    public readonly string Sprite;
+
+    public Note(string name, string sprite)
+    {
+        ItemName = name;
+        Sprite = sprite;
+    }
 }

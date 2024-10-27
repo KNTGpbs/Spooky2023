@@ -27,6 +27,7 @@ public class CarpetTrigger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !itemContainer.IsLocked && player.GetTurnedToBG() && !itemContainer.GetUsed() && playerEntered)
         {
             plank.SetActive(true);
+            itemContainer.AddEachItem();
             gameObject.SetActive(false);
         }
     }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemContainer : MonoBehaviour
@@ -8,7 +10,7 @@ public class ItemContainer : MonoBehaviour
     private PlayerMovement player;
     //[SerializeField] private GameObject furniture;
 
-    public string[] Items;
+    public List<String> Items;
 
     public bool IsLocked = false;
 
