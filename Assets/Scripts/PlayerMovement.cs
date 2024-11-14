@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            inventoryCanvas.SetActive(!inventoryCanvas.active);
+            inventoryCanvas.SetActive(!inventoryCanvas.activeSelf);
             guiCanvas.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Escape))

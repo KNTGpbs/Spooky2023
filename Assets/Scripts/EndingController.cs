@@ -86,4 +86,9 @@ public class EndingController: MonoBehaviour
         };
         enabled = true;
     }
+
+    public void TriggerBadEnding()
+    {
+        TriggerEnding(Ending.SanityOver);
+    }
 }
