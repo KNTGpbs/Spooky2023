@@ -18,9 +18,13 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private GameObject anchorsGameObject;
     [SerializeField] private GameObject newItemUI;
     [SerializeField] private GameObject newNoteUI;
+    [SerializeField] private Sprite altImage;
     public ItemTarget? currentTargetObject;
     public SanityController sanityController;
     public UI_NoteDisplay noteDisplay;
+
+    private Image invSprite;
+    Sprite normalImage;
 
     private void Start()
     {
@@ -29,6 +33,8 @@ public class InventorySystem : MonoBehaviour
             anchors.Add(child.GameObject());
         };
         anchorsGameObject.transform.parent.gameObject.SetActive(false);
+        invSprite = anchorsGameObject.GetComponent<Image>();
+        normalImage = invSprite.sprite;
     }
 
     public void AddItem(ItemData item)
@@ -129,5 +135,26 @@ public class InventorySystem : MonoBehaviour
     public void TestFunction()
     {
         Debug.Log("Test success");
+    }
+
+    public void Toggle()
+    {
+        var canvas = anchorsGameObject.transform.parent.gameObject;
+        canvas.SetActive(!canvas.activeSelf);
+        if (canvas.activeSelf)
+        {
+            Activated();
+        }
+        
+    }
+
+    private void Activated()
+    {
+        if (UnityEngine.Random.value < 0.02)
+        {
+            invSprite.sprite = altImage;
+        } else {
+            invSprite.sprite = normalImage;
+        }
     }
 }

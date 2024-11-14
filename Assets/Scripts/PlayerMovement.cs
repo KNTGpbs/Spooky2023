@@ -11,8 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float input;
     private Rigidbody2D rb;
     private bool turnedToBG = false;
-    [SerializeField] private GameObject inventoryCanvas;
-    [SerializeField] private GameObject guiCanvas;
+    [SerializeField] private GameObject noteDisplayer;
     public InventorySystem Inventory;
     
     private Animator animator;
@@ -46,12 +45,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            inventoryCanvas.SetActive(!inventoryCanvas.activeSelf);
-            guiCanvas.SetActive(true);
+            Inventory.Toggle();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            guiCanvas.transform.Find("NoteDisplayer").gameObject.SetActive(false);
+            noteDisplayer.SetActive(false);
         }
 
         List<Collider2D> colliders = new();
