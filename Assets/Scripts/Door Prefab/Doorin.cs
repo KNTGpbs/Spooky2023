@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 enum OpenState
 {
@@ -9,6 +10,8 @@ enum OpenState
 
 public class Doorin : MonoBehaviour
 {
+    public UnityEvent doorOpened;
+    
     public Doorin OtherDoor;
     public float AnimSpeed = 1.0f / 2.0f;
     
@@ -29,6 +32,7 @@ public class Doorin : MonoBehaviour
             if (openState == OpenState.Closed)
             {
                 TriggerOpen(this);
+                doorOpened.Invoke();
             }
             else if (openState == OpenState.Open)
             {
@@ -53,7 +57,6 @@ public class Doorin : MonoBehaviour
         {
             door.GetComponent<Animator>().enabled = true;
             door.GetComponent<Animator>().Play("DoorOpen");
-            // TODO: Odtwórz dźwięk drzwi
             door.openState = OpenState.Opening;
             door = door.OtherDoor;
         } while (door?.openState == OpenState.Closed);
