@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         if (input != 0)
         {
             animator.Play(walkAnim);
-            if(!Input.GetKey(KeyCode.LeftShift))GetComponent<SpriteRenderer>().flipX = input < 0;
+            GetComponent<SpriteRenderer>().flipX = input < 0;
             turnedToBG = false;
         }
         else if(!turnedToBG)

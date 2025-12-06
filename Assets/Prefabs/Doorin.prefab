@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5811254268141650238}
   - component: {fileID: 4981331443505325064}
   - component: {fileID: -849916703577807455}
+  - component: {fileID: 4192326072568655809}
   - component: {fileID: 8544474353787077341}
   m_Layer: 0
   m_Name: Doorin
@@ -56,6 +57,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -77,6 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -149,8 +153,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6902213a7f821e0418b7c825aa224391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorOpened:
+    m_PersistentCalls:
+      m_Calls: []
   OtherDoor: {fileID: 0}
   AnimSpeed: 0.5
+--- !u!114 &4192326072568655809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748496338802479205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52660af090b83694184b205ef5a3fbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractableHighlights
+  used: 0
+  outlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  outlineThickness: 0.05
 --- !u!95 &8544474353787077341
 Animator:
   serializedVersion: 7

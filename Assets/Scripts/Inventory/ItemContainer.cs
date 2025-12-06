@@ -14,6 +14,11 @@ public class ItemContainer : MonoBehaviour
 
     public bool IsLocked = false;
 
+    private void Awake()
+    {
+        gameObject.AddComponent<InteractableHighlights>();
+    }
+
     private void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerMovement>();
@@ -36,9 +41,17 @@ public class ItemContainer : MonoBehaviour
     {
         if (!playerEntered)
             return;
-
-        if (Input.GetKeyDown(KeyCode.E) && !IsLocked && player.GetTurnedToBG() && !used)
+        
+        if (Input.GetKeyDown(KeyCode.E) && player.GetTurnedToBG())
         {
+            if (IsLocked && Items.Count != 0)
+            {
+                UIMessage.Instance.ShowMessage("You can`t even use it without...");
+            }
+            else if (used)
+            {
+                UIMessage.Instance.ShowMessage(("It is empty like you!"));
+            }
             /*
             Debug.Log(GameObject.Find("FurnitureTest").GetComponent<ItemContainer>().GetFlag());
             GameObject furniture = GameObject.Find("FurnitureTest");
@@ -46,10 +59,12 @@ public class ItemContainer : MonoBehaviour
             ItemData item = new SpecialItem("Key", furniture);
             inventorySystem.AddItem(item);
             */
-            AddEachItem();
+            else if(Items.Count!=0) AddEachItem();
         }
     }
 
+   
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerEntered = true;
@@ -68,6 +83,11 @@ public class ItemContainer : MonoBehaviour
             Debug.Log($"Item received: {item.ItemName}");
             inventorySystem.AddItem(item);
         }
+        UIMessage.Instance.ShowMessage("You found something");
+        GetComponent<ParticleSpawner>().PlayParticles();
         this.SetUsed();
+        var interactable = gameObject.GetComponent<InteractableHighlights>();
+        interactable.used = false;
+        interactable.Highlight(false);
     }
 }

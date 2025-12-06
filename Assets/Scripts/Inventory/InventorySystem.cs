@@ -73,6 +73,7 @@ public class InventorySystem : MonoBehaviour
     public void DisplayNote(Note note)
     {
         noteDisplay.ChangeNote(note.Sprite);
+        //GameObject.Find("NoteDisplayer").SetActive(true);
     }
 
     public void RemoveItem(ItemData itemToDelete) {

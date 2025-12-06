@@ -12,6 +12,7 @@ public class UI_NoteDisplay : MonoBehaviour
     public void ChangeNote(String noteSprite)
     {
         note.sprite = Resources.Load<Sprite>(noteSprite);
-        note.gameObject.SetActive(true); 
+        note.gameObject.SetActive(true);
+        guiCanvas.SetActive(true);
     }  
 }
