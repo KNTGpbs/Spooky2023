@@ -33,6 +33,8 @@ public class Tutodoor: SpecialItemTarget
             {
                 TutorialController.EndTutorial();
             }
+            else
+                UIMessage.Instance.ShowMessage("You need a Key");
         }
 
         if (openState == OpenState.Opening)

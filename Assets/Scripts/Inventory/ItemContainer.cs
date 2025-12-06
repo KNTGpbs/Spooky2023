@@ -16,7 +16,8 @@ public class ItemContainer : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.AddComponent<InteractableHighlights>();
+        if(gameObject.name != "DarkRoom")
+           gameObject.AddComponent<InteractableHighlights>();
     }
 
     private void Start()
@@ -30,7 +31,7 @@ public class ItemContainer : MonoBehaviour
     }
     public void SetUsed()
     {
-        if(!used) used = true;
+        if(!used)used = true;
     }
     public bool GetFlag()
     {
@@ -87,7 +88,7 @@ public class ItemContainer : MonoBehaviour
         GetComponent<ParticleSpawner>().PlayParticles();
         this.SetUsed();
         var interactable = gameObject.GetComponent<InteractableHighlights>();
-        interactable.used = false;
+        interactable.used = true;
         interactable.Highlight(false);
     }
 }

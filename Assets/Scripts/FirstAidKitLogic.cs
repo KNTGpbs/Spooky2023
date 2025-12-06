@@ -48,29 +48,26 @@ public class FirstAidKitLogic : MonoBehaviour
     public void BadClick_Action()
     {
         if (inventorySystem.FindItem("Encrypted Message"))
-        {
             endingController.TriggerEnding(Ending.BadPills);
-        }
+        else
+            UIMessage.Instance.ShowMessage("\"That one could kill me\"");
     }
 
     public void GoodClick_Action()
     {
-        if (inventorySystem.FindItem("Encrypted Message"))
-        {
+        if (inventorySystem.FindItem("Diagnose"))
+            endingController.TriggerEnding(Ending.GoodPills);
+        else if (inventorySystem.FindItem("Encrypted Message"))
             endingController.TriggerEnding(Ending.BadPills);
-            if (inventorySystem.FindItem("Diagnose"))
-            {
-                
-                endingController.TriggerEnding(Ending.GoodPills);
-            }
-        }
+        else 
+            UIMessage.Instance.ShowMessage("\"I will vomit after that...\"");
     }
 
     public void SanityClick_Action()
     {
         if (inventorySystem.FindItem("Encrypted Message"))
-        {
             sanityController.ModifySanity(-2000);
-        }
+        else
+            UIMessage.Instance.ShowMessage("\"Looks dangerous... I am afraid...\"");
     }
 }
